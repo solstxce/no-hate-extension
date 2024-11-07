@@ -1,0 +1,47 @@
+{
+  "name": "No Hate",
+  "version": "1.0.1",
+  "description": "Open source browser extension to block \"not safe for work\" content.",
+  "author": "Hitesh Kumar K",
+  "homepage_url": "https://github.com/solstxce/no-hate-extension",
+  "permissions": [
+    "<all_urls>",
+    "storage"
+  ],
+  "background": {
+    "scripts": ["src/background.js"],
+    "persistent": true
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js": ["src/content.js"],
+      "all_frames": true,
+      "run_at": "document_start"
+    }
+  ],
+  "browser_action": {
+    "default_icon": {
+      "16": "images/icon16.png",
+      "32": "images/icon32.png",
+      "48": "images/icon48.png",
+      "128": "images/icon128.png"
+    },
+    "default_title": "No Hate",
+    "default_popup": "src/popup.html"
+  },
+  "icons": {
+    "16": "images/icon16.png",
+    "32": "images/icon32.png",
+    "48": "images/icon48.png",
+    "128": "images/icon128.png"
+  },
+  "web_accessible_resources": [
+    "models/*, images/*"
+  ],
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+  "manifest_version": 2
+}
